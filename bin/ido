@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'ido'
+rescue LoadError
+  require 'rubygems'
+  require 'ido'
+end
+
+require 'optparse'
+require 'ostruct'
+
+$options = OpenStruct.new
+$options.verbose = false
+
+optparse = OptionParser.new do |opts|
+  opts.on('-h', '--help', 'Display this screen') do
+    puts opts
+    exit
+  end
+  opts.on('-v', 'be verbose') do
+    $options.verbose = true
+  end
+end
+
+optparse.parse!
+
+def log message
+  if $options.verbose
+    puts message
+  end
+end
+
+class Main
+
+  def run
+
+  end
+
+end
+
+Main.new.run()
